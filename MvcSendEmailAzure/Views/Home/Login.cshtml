@@ -1,0 +1,23 @@
+﻿<h1 style="color:blue">
+    Log In
+</h1>
+
+<form method="post">
+    <label>Usuario</label>
+    <input type="text" name="username" placeholder="User Name" class="form-control" />
+
+    <label>Password</label>
+    <input type="text" name="password" placeholder="Password" class="form-control" />
+
+    <button class="btn btn-info">
+        Log In
+    </button>
+
+</form>
+
+@if (ViewData["MENSAJE"] != null)
+{
+    <h2 style="color:orangered">
+        @ViewData["MENSAJE"]
+    </h2>
+}

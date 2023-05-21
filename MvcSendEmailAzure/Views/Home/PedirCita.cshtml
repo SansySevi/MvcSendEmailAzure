@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "PedirCita";
+    List<Mascota> mascotas = (List<Mascota>)ViewData["MASCOTAS"];
+}
+
+<h1>Pedir Cita</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="PedirCita">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label class="form-label">Mascota<span class="text-danger">*</span></label>
+                <select name="idmascota" class="form-control">
+                    @foreach (Mascota item in mascotas)
+                    {
+                        <option value="@item.IdMascota">
+                            @item.Nombre
+                        </option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Tipo</label>
+                <select name="tipo" class="form-control">
+                    <option>General</option>
+                    <option>Revisión</option>
+                    <option>Pruebas</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Fecha<span class="text-danger">*</span></label>
+                <input type="date" name="fecha" class="form-control" >
+            </div>
+            <div class="form-group">
+                <label class="form-label">Hora<span class="text-danger">*</span></label>
+                <input type="time" name="hora" class="form-control" >
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
