@@ -69,9 +69,11 @@ namespace MvcSendEmailAzure.Controllers
             ViewData["FECHA"] = citaDateTime;
 
             DateTime fechaFormateada = DateTime.ParseExact(fecha, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+            //CODIGO PARA EL EMAIL
             string email = usuario.Email;
             string asunto = "Cita Solicita Correctamente";
-            string mensaje = "Cita solicitada para mascota:" + mascota.Nombre + " en el día " + fechaFormateada.ToString("dd-MM-yyyy");
+            string mensaje = "Cita solicitada para mascota:" + mascota.Nombre + " en el día " + fechaFormateada.ToString("dd-MM-yyyy") + " a las " + hora;
 
             await this.service.SendMailAsync(email, asunto, mensaje);
 
